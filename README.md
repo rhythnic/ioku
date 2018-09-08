@@ -1,9 +1,5 @@
 # Ioku
-Inversion of control library for user interfaces.
-
-## Install
-
-`npm install ioku`
+Inversion of control library for user interfaces.S
 
 ## The problem
 
@@ -21,7 +17,7 @@ component names, a lot of time can be spent writing imports for the components.
 
 The solution for these problems is a design principle called
 [inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control).
-In inversion of control, you tell the module, Ioku, what you need, and it is the
+With inversion of control, you tell the a module what you need, and it is the
 module's responsibility to fulfill the request. Events are a good example of inversion
 of control. Instead of importing a function and invoking it, you emit an event and
 trust that the event will be handled.
@@ -57,8 +53,9 @@ import { createElement } from 'react'
 const ioku = Ioku()
 ioku.use(UiLibrary)
 
-// catch all usages of ioku.ui that haven't been registered with ioku.on
-// useful for rendering things like 'div' or 'p'
+// All usages of ioku.ui that haven't been registered end up in "catch"
+// It's useful for rendering things like 'div' or 'p'
+// If not set, catch will throw an error
 ioku.catch = createElement
 
 export default ioku
@@ -66,7 +63,8 @@ export default ioku
 
 **Use Ioku**
 ```
-import { ui } from './ioku'
+import ioku from './ioku'
+const { ui } = ioku
 
 export default function MyComponent (props) {
   return ui(
@@ -122,3 +120,7 @@ function MyPlugin (ioku: Object, opts: any): void {}
 ioku.use(MyPlugin)
 ioku.use(MyPlugin, { theme: { primary: 'blue' } })
 ```
+
+## Credits
+
+Ioku was inspired by [Seneca.js](http://senecajs.org/).
