@@ -1,5 +1,5 @@
 # Ioku
-Inversion of control library for user interfaces.S
+Inversion of control for user interfaces.
 
 ## The problem
 
