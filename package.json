@@ -1,0 +1,16 @@
+{
+  "name": "ioku",
+  "version": "0.0.1",
+  "description": "Inversion of control for user interfaces",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhything/ioku.git"
+  },
+  "author": "Nick Baroni",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rhything/ioku/issues"
+  },
+  "homepage": "https://github.com/rhything/ioku#readme"
+}
