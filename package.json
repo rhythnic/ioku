@@ -1,7 +1,7 @@
 {
   "name": "ioku",
   "version": "0.0.1",
-  "description": "Inversion of control for user interfaces",
+  "description": "A small library for decoupling view components.",
   "main": "src/index.js",
   "repository": {
     "type": "git",

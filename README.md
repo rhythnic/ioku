@@ -1,26 +1,23 @@
 # Ioku
-Inversion of control for user interfaces.
+A small library for decoupling view components.
 
 ## The problem
 
-Component-based frontend architectures are declarative but procedural.
-Components import other components and use them in the render function.
-This is problematic for a few reasons.  It creates a tight coupling between your app's
-domain-specific (custom) components and your UI library. If you want to change your UI library,
-you need to rewrite all of your components. UI library component names can be long,
-causing your render functions to be cluttered with long component names. If you want
-to use a button, you shouldn't have to use the lengthy component name for a button.
-You should be able to simply write "button" or "modal". In addition to writing lengthy
-component names, a lot of time can be spent writing imports for the components.
+In component-based frontend architectures, components import other components and use
+them in the render function. This is problematic for a few reasons.  It creates a tight
+coupling between your app's domain-specific (custom) components and your UI library.
+If you want to change your UI library, you need to rewrite all of your components.
+UI library component names can be long, causing your render functions to be cluttered
+with long component names. If you want to use a button, you shouldn't have to use the
+lengthy component name for a button. You should be able to simply write "button" or
+"modal". In addition to writing lengthy component names, a lot of time can be spent
+writing imports for the components.
 
 ## The solution
 
-The solution for these problems is a design principle called
-[inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control).
-With inversion of control, you tell the a module what you need, and it is the
-module's responsibility to fulfill the request. Events are a good example of inversion
-of control. Instead of importing a function and invoking it, you emit an event and
-trust that the event will be handled.
+The solution to these problems is to decouple UI components with a layer of
+indirection. UI components can tell Ioku what they want, and it's Ioku's
+job to resolve the request.
 
 ## About Ioku
 
@@ -39,8 +36,10 @@ clearer how to support more component frameworks.
 import { createElement } from 'react'
 import Button from '@material-ui/core/Button'
 
+const h = component => (...args) => createElement(component, ...args)
+
 export default function UiLibrary (ioku, options) {
-  ioku.on('button', (props, children) => createElement(Button, props, children))
+  ioku.on('button', h(Button))
 }
 ```
 
