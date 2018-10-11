@@ -15,9 +15,8 @@ writing imports for the components.
 
 ## The solution
 
-The solution to these problems is to decouple UI components with a layer of
-indirection. UI components can tell Ioku what they want, and it's Ioku's
-job to resolve the request.
+The solution to these problems is to decouple UI components with dependency inversion.
+UI components can tell Ioku what they want, and it's Ioku's job to resolve the request.
 
 ## About Ioku
 
